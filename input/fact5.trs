@@ -1,0 +1,10 @@
+0   + Y -> Y ;
+s X + Y -> s (X + Y) ;
+
+mul 0     Y -> 0 ;
+mul (s X) Y -> mul X Y + Y ;
+
+fact 0  -> s 0 ;
+fact (s X) -> mul (s X) (fact X) ;
+
+main -> fact 5 ;

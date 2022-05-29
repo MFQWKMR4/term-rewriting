@@ -1,0 +1,30 @@
+not true  -> false ;
+not false -> true ;
+
+lt X     0     -> false ;
+lt 0     (s Y) -> true ;
+lt (s X) (s Y) -> lt X Y ;
+
+geq X Y -> not (lt X Y) ;
+
+append []       YS -> YS ;
+append (X : XS) YS -> X : append XS YS ;
+
+filter P []            -> [] ;
+filter P (X : XS)      -> if_filter P X XS (P X) ;
+if_filter P X XS true  -> X : filter P XS ;
+if_filter P X XS false -> filter P XS ;
+
+qsort []       -> [] ;
+qsort (X : XS) -> append (qsort (filter (geq X) XS)) (X : qsort (filter (lt X) XS)) ;
+
+reverse []       -> [] ;
+reverse (X : XS) -> append (reverse XS) [X] ;
+
+shuffle []       -> [] ;
+shuffle (X : XS) -> X : reverse (shuffle XS) ;
+
+range 0     -> [] ;
+range (s X) -> X : range X ;
+
+main -> qsort (shuffle (range 10)) ;

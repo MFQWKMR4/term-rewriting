@@ -1,0 +1,3 @@
+append nil          YS -> YS ;
+append (cons X XS) YS -> cons X (append XS YS) ;
+main -> append (1:2:3:nil) (4:5:nil) ;

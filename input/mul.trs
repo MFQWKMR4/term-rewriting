@@ -1,0 +1,7 @@
+0     + Y -> Y ;
+s X + Y -> s (X + Y) ;
+
+mul 0 Y  -> 0 ;
+mul (s X) Y -> mul X Y + Y ;
+
+main -> mul 2 (2 + 3) + 4 ;
